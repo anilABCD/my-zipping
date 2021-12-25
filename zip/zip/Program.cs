@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Linq;
 
 namespace zip
 {
@@ -12,6 +13,7 @@ namespace zip
        public string key = "";
        public string value = "";
        public int phase = 0;
+       public uint incrementNumberToReverseMap = 0; 
     }
 
 
@@ -21,45 +23,56 @@ namespace zip
         static List<ZipTable> tabelList = new List<ZipTable>();
         static List<ZipTable> nextList = new List<ZipTable>();
         static uint incrementalNumber = 130; // 2 bytes value
+        static int incrementNumberForNext = 32;
 
-        Program()
+        void createListPhaseTwo()
         {
 
+            var startingNumber = 130;
+            var endingNumber = 224;
+
+            incrementalNumber = 32;
+
+            for (var i = startingNumber; i <= endingNumber; i++)
+            {
+                for (var j = startingNumber; j <= endingNumber; j++)
+                {
+                    var zipTable = new ZipTable();
 
 
+                    var mainKey = Convert.ToChar(i).ToString();
+                    var key = Convert.ToChar(i).ToString() + Convert.ToChar(j).ToString();
 
-            createListPhaseOne();
-            
+                    var value = Convert.ToChar(incrementalNumber).ToString();
+
+                    if(value == "b")
+                    {
+                        break;
+                    }
+
+                    //var value = (char)incrementalNumber;
+
+                    zipTable.mainKey = mainKey.ToString();
+                    zipTable.key = key;
+                    zipTable.value = value;
+
+                    zipTable.incrementNumberToReverseMap = incrementalNumber;
+
+                    Console.WriteLine(" key value : " + mainKey + " " + key + " " + value);
+
+                    nextList.Add(zipTable);
+
+                    incrementalNumber += 1;
+
+                }
+
+
+            }
         }
 
         void createListPhaseOne()
         {
-            //for (var i = 97; i <= 122; i++)
-            //{
-            //    for (var j = 97; j <= 122; j++)
-            //    {
-            //        var zipTable = new ZipTable();
-
-
-            //        var mainKey = Convert.ToChar(i).ToString();
-            //        var key = Convert.ToChar(i).ToString() + Convert.ToChar(j).ToString();
-
-            //        var value = Convert.ToChar(incrementalNumber).ToString();
-
-            //        //var value = (char)incrementalNumber;
-
-            //        zipTable.mainKey = mainKey.ToString();
-            //        zipTable.key = key;
-            //        zipTable.value = value;
-
-            //        Console.WriteLine(mainKey + " " + key + " " + value);
-
-            //        tabelList.Add(zipTable);
-
-            //        incrementalNumber += 1;
-
-            //    }
-            //}
+            
 
             for (var i = 32; i <= 126; i++)
             {
@@ -78,6 +91,8 @@ namespace zip
                     zipTable.mainKey = mainKey.ToString();
                     zipTable.key = key;
                     zipTable.value = value;
+
+                    zipTable.incrementNumberToReverseMap = incrementalNumber;
 
                     Console.WriteLine(" key value : " + mainKey + " " + key + " " + value);
 
@@ -186,5 +201,41 @@ namespace zip
            
         }
 
+
+        Program()
+        {
+            createListPhaseOne();
+            createListPhaseTwo();
+        }
+
+
     }
 }
+
+
+//for (var i = 97; i <= 122; i++)
+//{
+//    for (var j = 97; j <= 122; j++)
+//    {
+//        var zipTable = new ZipTable();
+
+
+//        var mainKey = Convert.ToChar(i).ToString();
+//        var key = Convert.ToChar(i).ToString() + Convert.ToChar(j).ToString();
+
+//        var value = Convert.ToChar(incrementalNumber).ToString();
+
+//        //var value = (char)incrementalNumber;
+
+//        zipTable.mainKey = mainKey.ToString();
+//        zipTable.key = key;
+//        zipTable.value = value;
+
+//        Console.WriteLine(mainKey + " " + key + " " + value);
+
+//        tabelList.Add(zipTable);
+
+//        incrementalNumber += 1;
+
+//    }
+//}
