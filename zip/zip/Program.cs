@@ -22,7 +22,8 @@ namespace zip
 
         Program()
         {
-            var incrementalNumber = 300;
+            uint incrementalNumber = 0; // 2 bytes value
+
 
             for (var i = 97; i <= 122; i++)
             {
@@ -30,12 +31,13 @@ namespace zip
                 {
                     var zipTable = new ZipTable();
 
-                    incrementalNumber += 1;
-
+                  
                     var mainKey = Convert.ToChar(i).ToString();
                     var key = Convert.ToChar(i).ToString() + Convert.ToChar(j).ToString();
 
                     var value = Convert.ToChar(incrementalNumber).ToString();
+
+                    //var value = (char)incrementalNumber;
 
                     zipTable.mainKey = mainKey.ToString();
                     zipTable.key = key;
@@ -44,6 +46,9 @@ namespace zip
                     Console.WriteLine(mainKey + " " + key + " " + value);
 
                     tabelList.Add(zipTable);
+
+                    incrementalNumber += 1;
+
                 }
             }
 
@@ -53,23 +58,41 @@ namespace zip
 
         void execute()
         {
-            string text = @"anilkumarp";
+            string text = @"anilkumarp[padding]";
 
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("**************Hello World!**************");
 
             int phases = 2;
 
+            if(text.Length %2 != 0)
+            {
+                text += "0";
+            }
+          
+
             var zipped = zip(text, phases);
+
+           
 
             var unzipped = unZip(zipped, phases);
 
+            Console.WriteLine("Original Text :::");
+  
+            Console.WriteLine( text);
+            Console.WriteLine("");
+            Console.WriteLine("");
 
+            Console.WriteLine("Zipped ::: ");
             Console.WriteLine(zipped);
+            Console.WriteLine("");
+
+
+            Console.WriteLine("Un zipped ::: ");
             Console.WriteLine(unzipped);
-            Console.WriteLine( "zipped " + text + " " + zipped);
-            Console.WriteLine("un zipped " + text + " " + unzipped);
-            Console.ReadLine();
-            Console.ReadLine();
+            Console.WriteLine("");
+
+            Console.ReadKey();
+
         }
 
         string zip(string text, int phases)
@@ -84,11 +107,10 @@ namespace zip
                     if( tabelList[i].key == to)
                     {
                         result += tabelList[i].value;
-                    }       
+                    }
+                    
                 }
             }
-
-            Console.WriteLine(result);
 
             return result;
         }
@@ -100,7 +122,7 @@ namespace zip
 
             for (var j = 0; j < text.Length; j += 1)
             {
-                for (int i = tabelList.Count -1; i >=0; i--)
+                for (int i = 0 ; i< tabelList.Count ; i++)
                 {
                     string to = (Convert.ToChar(text[j]).ToString()).ToString();
 
