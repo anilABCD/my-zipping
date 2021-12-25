@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/anilkumarpotlapally/Desktop/zip/zip/zip/zip.csproj",
+      "projectUniqueName": "/Users/anilkumarpotlapally/anil/GitHub/my-zipping/zip/zip/zip.csproj",
       "projectName": "zip",
-      "projectPath": "/Users/anilkumarpotlapally/Desktop/zip/zip/zip/zip.csproj",
+      "projectPath": "/Users/anilkumarpotlapally/anil/GitHub/my-zipping/zip/zip/zip.csproj",
       "packagesPath": "/Users/anilkumarpotlapally/.nuget/packages/",
-      "outputPath": "/Users/anilkumarpotlapally/Desktop/zip/zip/zip/obj/",
+      "outputPath": "/Users/anilkumarpotlapally/anil/GitHub/my-zipping/zip/zip/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/anilkumarpotlapally/.config/NuGet/NuGet.Config"
