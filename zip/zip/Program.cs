@@ -19,19 +19,55 @@ namespace zip
     {
 
         static List<ZipTable> tabelList = new List<ZipTable>();
+        static List<ZipTable> nextList = new List<ZipTable>();
+        static uint incrementalNumber = 130; // 2 bytes value
 
         Program()
         {
-            uint incrementalNumber = 0; // 2 bytes value
 
 
-            for (var i = 97; i <= 122; i++)
+
+
+            createListPhaseOne();
+            
+        }
+
+        void createListPhaseOne()
+        {
+            //for (var i = 97; i <= 122; i++)
+            //{
+            //    for (var j = 97; j <= 122; j++)
+            //    {
+            //        var zipTable = new ZipTable();
+
+
+            //        var mainKey = Convert.ToChar(i).ToString();
+            //        var key = Convert.ToChar(i).ToString() + Convert.ToChar(j).ToString();
+
+            //        var value = Convert.ToChar(incrementalNumber).ToString();
+
+            //        //var value = (char)incrementalNumber;
+
+            //        zipTable.mainKey = mainKey.ToString();
+            //        zipTable.key = key;
+            //        zipTable.value = value;
+
+            //        Console.WriteLine(mainKey + " " + key + " " + value);
+
+            //        tabelList.Add(zipTable);
+
+            //        incrementalNumber += 1;
+
+            //    }
+            //}
+
+            for (var i = 32; i <= 126; i++)
             {
-                for (var j = 97; j <= 122; j++)
+                for (var j = 32; j <= 126; j++)
                 {
                     var zipTable = new ZipTable();
 
-                  
+
                     var mainKey = Convert.ToChar(i).ToString();
                     var key = Convert.ToChar(i).ToString() + Convert.ToChar(j).ToString();
 
@@ -43,22 +79,25 @@ namespace zip
                     zipTable.key = key;
                     zipTable.value = value;
 
-                    Console.WriteLine(mainKey + " " + key + " " + value);
+                    Console.WriteLine(" key value : " + mainKey + " " + key + " " + value);
 
                     tabelList.Add(zipTable);
 
                     incrementalNumber += 1;
 
                 }
-            }
 
-            
+               
+            }
         }
 
+    
 
         void execute()
         {
-            string text = @"anilkumarp[padding]";
+            string text = @"anilkumarp kkkk k ";
+
+            text += "[padding]";
 
             Console.WriteLine("**************Hello World!**************");
 
@@ -68,13 +107,17 @@ namespace zip
             {
                 text += "0";
             }
-          
 
+            
             var zipped = zip(text, phases);
 
            
 
             var unzipped = unZip(zipped, phases);
+
+            int index = unzipped.LastIndexOf("[padding]");
+
+            unzipped = unzipped.Substring(0, index);
 
             Console.WriteLine("Original Text :::");
   
@@ -139,7 +182,7 @@ namespace zip
         {
             Program p = new Program();
 
-            p.execute();
+           p.execute();
            
         }
 
