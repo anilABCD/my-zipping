@@ -1,0 +1,13 @@
+/Users/anilkumarpotlapally/Desktop/zip/zip/zip/bin/Debug/netcoreapp3.1/zip.deps.json
+/Users/anilkumarpotlapally/Desktop/zip/zip/zip/bin/Debug/netcoreapp3.1/zip.runtimeconfig.json
+/Users/anilkumarpotlapally/Desktop/zip/zip/zip/bin/Debug/netcoreapp3.1/zip.runtimeconfig.dev.json
+/Users/anilkumarpotlapally/Desktop/zip/zip/zip/bin/Debug/netcoreapp3.1/zip.dll
+/Users/anilkumarpotlapally/Desktop/zip/zip/zip/bin/Debug/netcoreapp3.1/zip.pdb
+/Users/anilkumarpotlapally/Desktop/zip/zip/zip/obj/Debug/netcoreapp3.1/zip.csproj.AssemblyReference.cache
+/Users/anilkumarpotlapally/Desktop/zip/zip/zip/obj/Debug/netcoreapp3.1/zip.GeneratedMSBuildEditorConfig.editorconfig
+/Users/anilkumarpotlapally/Desktop/zip/zip/zip/obj/Debug/netcoreapp3.1/zip.AssemblyInfoInputs.cache
+/Users/anilkumarpotlapally/Desktop/zip/zip/zip/obj/Debug/netcoreapp3.1/zip.AssemblyInfo.cs
+/Users/anilkumarpotlapally/Desktop/zip/zip/zip/obj/Debug/netcoreapp3.1/zip.csproj.CoreCompileInputs.cache
+/Users/anilkumarpotlapally/Desktop/zip/zip/zip/obj/Debug/netcoreapp3.1/zip.dll
+/Users/anilkumarpotlapally/Desktop/zip/zip/zip/obj/Debug/netcoreapp3.1/zip.pdb
+/Users/anilkumarpotlapally/Desktop/zip/zip/zip/obj/Debug/netcoreapp3.1/zip.genruntimeconfig.cache
