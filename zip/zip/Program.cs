@@ -11,7 +11,7 @@ namespace zip
     {
        public string mainKey = "";
        public string key = "";
-       public string value = "";
+       public Int64 value = 0;
        public int phase = 0;
        public uint incrementNumberToReverseMap = 0; 
     }
@@ -25,11 +25,49 @@ namespace zip
         static uint incrementalNumber = 130; // 2 bytes value
         static int incrementNumberForNext = 32;
 
+
+        void createListPhaseOne()
+        {
+
+
+            for (var i = 32; i <= 126; i++)
+            {
+                for (var j = 32; j <= 126; j++)
+                {
+                    var zipTable = new ZipTable();
+
+
+                    var mainKey = i;
+                    var key = i + " " + j;
+
+                    //var value = Convert.ToChar(incrementalNumber).ToString();
+
+                    var value = incrementalNumber;
+
+                    zipTable.mainKey = mainKey.ToString();
+                    zipTable.key = key;
+                    zipTable.value = value;
+
+                    zipTable.incrementNumberToReverseMap = incrementalNumber;
+
+                    Console.WriteLine(" key value : " + mainKey + " " + key + " " + value);
+
+                    tabelList.Add(zipTable);
+
+                    incrementalNumber += 1;
+
+                }
+
+
+            }
+        }
+
+
         void createListPhaseTwo()
         {
 
             var startingNumber = 130;
-            var endingNumber = 224;
+            var endingNumber = 9024;
 
             incrementalNumber = 32;
 
@@ -43,14 +81,10 @@ namespace zip
                     var mainKey = Convert.ToChar(i).ToString();
                     var key = Convert.ToChar(i).ToString() + Convert.ToChar(j).ToString();
 
-                    var value = Convert.ToChar(incrementalNumber).ToString();
+                    //var value = Convert.ToChar(incrementalNumber).ToString();
 
-                    if(value == "b")
-                    {
-                        break;
-                    }
-
-                    //var value = (char)incrementalNumber;
+                    var value = incrementalNumber;
+                   
 
                     zipTable.mainKey = mainKey.ToString();
                     zipTable.key = key;
@@ -70,42 +104,7 @@ namespace zip
             }
         }
 
-        void createListPhaseOne()
-        {
-            
-
-            for (var i = 32; i <= 126; i++)
-            {
-                for (var j = 32; j <= 126; j++)
-                {
-                    var zipTable = new ZipTable();
-
-
-                    var mainKey = Convert.ToChar(i).ToString();
-                    var key = Convert.ToChar(i).ToString() + Convert.ToChar(j).ToString();
-
-                    var value = Convert.ToChar(incrementalNumber).ToString();
-
-                    //var value = (char)incrementalNumber;
-
-                    zipTable.mainKey = mainKey.ToString();
-                    zipTable.key = key;
-                    zipTable.value = value;
-
-                    zipTable.incrementNumberToReverseMap = incrementalNumber;
-
-                    Console.WriteLine(" key value : " + mainKey + " " + key + " " + value);
-
-                    tabelList.Add(zipTable);
-
-                    incrementalNumber += 1;
-
-                }
-
-               
-            }
-        }
-
+        
     
 
         void execute()
